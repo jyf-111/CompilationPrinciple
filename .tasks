@@ -1,0 +1,13 @@
+[build]
+command=xmake f --toolchain=mingw --arch=x86_64 --mode=release --plat=mingw 
+cwd=$(VIM_ROOT)
+output=terminal
+pos=bottom
+save=2
+
+[run]
+command=xmake run
+cwd=$(VIM_ROOT)
+output=terminal
+pos=bottom
+save=2
