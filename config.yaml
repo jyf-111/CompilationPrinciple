@@ -1,0 +1,17 @@
+CompileFlags:
+  Add: [ -std=c++2b, -Wall, -Wno-unused-function, -Wno-unused-macros,-Wno-unused-member-function,-Wno-unused-template]
+  Compiler: clang++  
+Style:
+  FullyQualifiedNamespaces: NO
+Diagnostics:
+  Suppress: Wunused
+  ClangTidy:
+    Add: modernize*
+    Remove: modernize-use-trailing-return-type
+  UnusedIncludes: Strict
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+Hover:
+  ShowAKA: Yes

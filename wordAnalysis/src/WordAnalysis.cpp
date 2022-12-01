@@ -21,8 +21,8 @@ const std::unordered_set<string> WordAnalysis::operators = {
 const std::unordered_set<string> WordAnalysis::delimiters = {
     "(", ")", "[", "]", "{", "}", ",", ";", ".", ":", "?", "#", "\"", "\'"};
 
-WordAnalysis::WordAnalysis() {
-    fileUtil = std::make_unique<FileUtil>("input.cpp");
+WordAnalysis::WordAnalysis(string fileName) {
+    fileUtil = std::make_unique<FileUtil>(fileName);
 }
 bool WordAnalysis::isoperator(char c) {
     return operators.find(string(1, c)) != operators.end();
@@ -31,9 +31,10 @@ bool WordAnalysis::isdelimiter(char c) {
     return delimiters.find(string(1, c)) != delimiters.end();
 }
 
-void WordAnalysis::errorHandler(string s) {
-	throw std::runtime_error("error: " + s);
-	return;
+void WordAnalysis::errorHandler(
+    string s, std::source_location loc = std::source_location::current()) {
+    throw std::runtime_error("error: " + s);
+    return;
 }
 
 void WordAnalysis::analysis() {
@@ -76,10 +77,9 @@ void WordAnalysis::analysis() {
             if (!currentOperator.empty()) {
                 if (operators.find(currentOperator) != operators.end())
                     result.emplace_back(WordEnum::Operator, currentOperator);
-				else{
-					// TODO: error
-					errorHandler("no such operater" + currentOperator);
-				}
+                else {
+                    errorHandler("no such operater" + currentOperator);
+                }
                 currentOperator.clear();
             }
         }
@@ -92,12 +92,12 @@ void WordAnalysis::analysis() {
         // if is space, tab, newline, carriage return, form feed, vertical tab
         if (isspace(c)) continue;
 
-		errorHandler("no such char" + string(1, c));
+        errorHandler("no such char" + string(1, c));
     }
 }
 
 void WordAnalysis::printResult() {
-    for (auto &i : result) {
+    for (auto& i : result) {
         std::cout << static_cast<std::underlying_type<WordEnum>::type>(i.first)
                   << " " << i.second << std::endl;
     }

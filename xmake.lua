@@ -1,3 +1,5 @@
+---@diagnostic disable 
+
 -- the debug mode
 if is_mode("debug") then
 
@@ -15,15 +17,29 @@ if is_mode("release") then
 	-- strip all symbols
 	set_strip("all")
 end
+
+add_cxxflags("-std=c++2b")
 -- add target
 target("wordanalysis")
 after_build(function(target)
 	import("core.project.task")
 	task.run("project", { kind = "compile_commands", outputdir = "build" })
 end)
-
 -- set kind
 set_kind("binary")
 add_includedirs("wordanalysis/include")
 -- add files
 add_files("wordanalysis/src/*.cpp")
+
+
+
+target("syntaxAnalysis")
+after_build(function(target)
+	import("core.project.task")
+	task.run("project", { kind = "compile_commands", outputdir = "build" })
+end)
+
+set_kind("binary")
+add_includedirs("syntaxAnalysis/recursiveDescendingSubroutines/include")
+-- add files
+add_files("syntaxAnalysis/recursiveDescendingSubroutines/src/*.cpp")

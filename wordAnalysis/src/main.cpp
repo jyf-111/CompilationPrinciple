@@ -1,7 +1,7 @@
 #include "WordAnalysis.h"
 int main(int argc, char* argv[]) {
-    WordAnalysis wordAnalysis;
     try {
+		WordAnalysis wordAnalysis("input.c");
         wordAnalysis.analysis();
         wordAnalysis.printResult();
     } catch (std::runtime_error& e) {
