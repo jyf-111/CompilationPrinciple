@@ -6,7 +6,7 @@ pos=bottom
 save=2
 
 [run]
-command=xmake run syntaxAnalysis
+command=xmake run
 cwd=$(VIM_ROOT)
 output=terminal
 pos=bottom

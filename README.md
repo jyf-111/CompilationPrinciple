@@ -13,7 +13,7 @@ C++最低版本C++17
 - `xmake run wordAnalysis`
 - `xmake run syntaxAnalysis`
 
-分为四个子项目 wordAnalysis syntaxAnalysis 
+分为两个子项目 wordAnalysis syntaxAnalysis 
 
 - 词法分析 主要是每读一个单词转移到一个状态,做相应处理
 - 递归子程序 利用了栈,主要难点是处理回溯的部分
