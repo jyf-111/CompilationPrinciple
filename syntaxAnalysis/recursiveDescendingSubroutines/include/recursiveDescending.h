@@ -9,8 +9,6 @@ class recursiveDescending {
     using record = std::tuple<int, std::string, std::string, std::vector<int>>;
     static std::multimap<char, std::string> table;
 
-    // 回溯stash
-
    public:
     std::vector<record> stash;
     void printStatus(const int& status, const std::string& symbol,
@@ -20,6 +18,5 @@ class recursiveDescending {
                std::vector<int> outter);
     void rollback(int& status, std::string& symbol, std::string& str,
                   std::vector<int>& outter
-                  // ,std::vector<record>& stash
     );
 };

@@ -5,7 +5,6 @@
 #include <unordered_set>
 #include <utility>
 #include <vector>
-#include <source_location>
 
 #include "FileUtil.h"
 #include "WordEnum.h"
@@ -20,10 +19,10 @@ class WordAnalysis {
     static const std::unordered_set<string> reservedWords;
     static const std::unordered_set<string> operators;
     static const std::unordered_set<string> delimiters;
-    void errorHandler(string,std::source_location);
+    void errorHandler(string);
 
    public:
     WordAnalysis(string);
     void analysis();
-    void printResult();
+    void printResult() const noexcept;
 };

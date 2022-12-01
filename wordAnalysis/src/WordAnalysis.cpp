@@ -31,8 +31,7 @@ bool WordAnalysis::isdelimiter(char c) {
     return delimiters.find(string(1, c)) != delimiters.end();
 }
 
-void WordAnalysis::errorHandler(
-    string s, std::source_location loc = std::source_location::current()) {
+void WordAnalysis::errorHandler(string s) {
     throw std::runtime_error("error: " + s);
     return;
 }
@@ -96,7 +95,7 @@ void WordAnalysis::analysis() {
     }
 }
 
-void WordAnalysis::printResult() {
+void WordAnalysis::printResult() const noexcept {
     for (auto& i : result) {
         std::cout << static_cast<std::underlying_type<WordEnum>::type>(i.first)
                   << " " << i.second << std::endl;
