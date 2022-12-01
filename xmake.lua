@@ -27,9 +27,9 @@ after_build(function(target)
 end)
 -- set kind
 set_kind("binary")
-add_includedirs("wordanalysis/include")
+add_includedirs("wordAnalysis/include")
 -- add files
-add_files("wordanalysis/src/*.cpp")
+add_files("wordAnalysis/src/*.cpp")
 
 
 

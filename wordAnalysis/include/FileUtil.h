@@ -17,5 +17,5 @@ class FileUtil {
     ~FileUtil();
     char getNextChar();
     char peekNextChar();
-    bool hasNextChar();
+    [[nodiscard]] bool hasNextChar() const noexcept;
 };
